@@ -3,17 +3,19 @@ import { Container, LoadingIcon } from './styles';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import * as Svg from 'react-native-svg';
-import LogoPreload from '../../assets/claquete.svg';
+import Logo from '../../assets/claquete.svg';
 
 export default () => {
     const navigation = useNavigation();
     useEffect(() => {
         const checkToken = async () => {
             const token = await AsyncStorage.getItem('token');
-            if (token){
-                // validar o token
+            if (token !== null){
+                alert('Passou do login.');
+                navigation.navigate('MainTab');
+                
             } else {
-                navigation.navigate('LogIn');
+              navigation.navigate('LogIn');
             }
         }
         checkToken();
@@ -21,7 +23,7 @@ export default () => {
 
     return (
         <Container>
-            <LogoPreload width="50%" heigth="160"/>
+            <Logo width="50%" heigth="160"/>
             <LoadingIcon size="large" color="#fff"/>
         </Container>
     );

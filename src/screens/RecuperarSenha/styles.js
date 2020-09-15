@@ -6,11 +6,10 @@ export const Container = styled.SafeAreaView`
     flex: 1;
     justify-content: center;
     align-items: center;
-    align-content: center;
 `;
 
 export const InputArea = styled.View`
-    width: 90%; 
+    width: 90%;    
     margin-top: 30px;
 `;
 export const CustonButton = styled.TouchableOpacity`
@@ -19,7 +18,6 @@ export const CustonButton = styled.TouchableOpacity`
     border-radius: 30px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
 `;
 export const CustonButtonText = styled.Text`
     font-size: 18px;
@@ -28,7 +26,8 @@ export const CustonButtonText = styled.Text`
 export const SignMessageButton = styled.TouchableOpacity`
     flex-direction: row;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 50px;
+    margin-bottom: 60%;
 `;
 export const SignMessageButtonText = styled.Text`
     font-size: 16px;
