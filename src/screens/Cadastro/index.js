@@ -35,7 +35,7 @@ export default () => {
                 <SignInput
                     IconSvg={PersonIcon} 
                     placeholder="Digite seu nome"
-                    value={nomeField}
+                    value={nameField}
                     onChangeText={t=>setNameField(t)}          
 
                 />

@@ -1,9 +1,8 @@
-//const { ReactNativeFirebase } = require("@react-native-firebase/app");
-
+import firebase from './src/FirebaseConnection';
 
 class PopularMovies {
     logout(){
-        ReactNativeFirebase.auth().signOut();
+        firebase.auth().signOut();
     }
 
     addAuthListener(callback){
@@ -11,6 +10,7 @@ class PopularMovies {
     }
 
     Login (email, senha){
+        
         return firebase.auth().signInWithEmailAndPassword(email, senha);
     }
 

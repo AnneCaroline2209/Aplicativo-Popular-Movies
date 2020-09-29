@@ -8,6 +8,7 @@ import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
 import PopularMovies from '../../../Api';
 
+
 export default () => {
     const navigation = useNavigation();
 
@@ -21,14 +22,16 @@ export default () => {
         });
     }
 
-    const handleLogInClick = () => {
+    const handleLogInClick = () =>         
+        PopularMovies.Login(emailField, passwordField).catch((error)=>{
+            alert(error.code);
+        });
         PopularMovies.addAuthListener((user)=>{
             if(user){
-                navigation.navigate('MainTab');
+                navigation.navigate('Home');     
             }
-        }); 
+        });
     }
-
   
     const handleMessageButtonClick = () => {
         navigation.reset({
@@ -46,8 +49,7 @@ export default () => {
                     placeholder="Digite seu e-mail"
                     value={emailField}
                     onChangeText={t=>setEmailField(t)}          
-
-                    />
+                />
                 <SignInput 
                     IconSvg={LockIcon} 
                     placeholder="Digite sua senha"

@@ -19,7 +19,7 @@ const TabItem = styled.TouchableOpacity`
 `;
 
 
-export default ({state, navigation}) => {
+export default ({navigation}) => {
 
     const goTo = (screenName) => {
         navigation.navigate(screenName);
