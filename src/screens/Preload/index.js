@@ -12,7 +12,9 @@ export default () => {
             const token = await AsyncStorage.getItem('token');
             if (token !== null){
                 alert('Passou do login.');
-                navigation.navigate('MainTab');
+                navigation.reset[{
+                    routes:[{name: 'MainTab'}]
+                }];
                 
             } else {
               navigation.navigate('LogIn');

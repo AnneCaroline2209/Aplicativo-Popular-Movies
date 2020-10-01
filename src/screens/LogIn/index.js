@@ -22,15 +22,18 @@ export default () => {
         });
     }
 
-    const handleLogInClick = () =>         
-        PopularMovies.Login(emailField, passwordField).catch((error)=>{
+    const handleLogInClick = () => { 
+        navigation.reset({
+            routes: [{name: 'MainTab'}]
+        });       
+       /* PopularMovies.Login(emailField, passwordField).catch((error)=>{ não ia dar certo nunca
             alert(error.code);
         });
         PopularMovies.addAuthListener((user)=>{
             if(user){
                 navigation.navigate('Home');     
             }
-        });
+        });*/
     }
   
     const handleMessageButtonClick = () => {
@@ -38,6 +41,7 @@ export default () => {
             routes: [{name: 'Cadastro'}]
         });
     }
+
     
     
     return (

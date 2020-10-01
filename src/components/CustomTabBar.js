@@ -30,6 +30,15 @@ export default ({navigation}) => {
             <TabItem onPress={()=>goTo('Home')}>
                 <HomeIcon width="24" heigth="24" fill="#FFF" />
             </TabItem>
+            <TabItem onPress={()=>goTo('Search')}>
+                <SearchIcon width="24" heigth="24" fill="#FFF" />
+            </TabItem>
+            <TabItem onPress={()=>goTo('Search')}>
+                <FavoriteIcon width="24" heigth="24" fill="#FFF" />
+            </TabItem>
+            <TabItem onPress={()=>goTo('Search')}>
+                <AccountIcon width="24" heigth="24" fill="#FFF" />
+            </TabItem>
         </TabArea>
     );
 }

@@ -26,7 +26,38 @@ export default () => {
             routes: [{name: 'LogIn'}]
         });
     }
+
+
+    /* const handleLogInClick = () => {
+        if (!email) {
+            setError("Email obrigatório*")
+            setValid(false)
+            return
+        } else if (!password && password.trim() && password.length > 6) {
+            setError("Senha fraca, mínimo 6 caracteres")
+            setValid(false)
+            return
+        } else if (!__isValidEmail(email)) {
+            setError("Email Inválido")
+            setValid(false)
+            return
+        }
+
+        handleLogInClick(email, password)
+    }
+
+    /*const handleLogInClick = async (email, password) => {
+        try {
+            let response = await auth().createUserWithEmailAndPassword(email, password)
+            if (response) {
+                console.log(tag, "🍎", response)
+            }
+        } catch (e) {
+            console.error(e.message)
+        }
+    }*/
     
+
 
     return (
         <Container>
