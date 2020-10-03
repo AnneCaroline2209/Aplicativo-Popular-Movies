@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Container, InputArea, CustonButton, CustonButtonText, SignMessageButton, SignMessageButtonText, SignMessageButtonTextBold } from './styles';
 import SignInput from '../../components/SignInput';
@@ -15,6 +15,9 @@ export default () => {
     const [emailField, setEmailField] = useState(''); 
     const [passwordField, setPasswordField] = useState('');
     
+    useEffect(()=>{
+        logout();
+    },[]);
 
     const handleRecuperarClick = () => {
         navigation.reset({
@@ -22,24 +25,27 @@ export default () => {
         });
     }
 
-    const handleLogInClick = () => { 
-        navigation.reset({
-            routes: [{name: 'MainTab'}]
-        });       
-       /* PopularMovies.Login(emailField, passwordField).catch((error)=>{ não ia dar certo nunca
-            alert(error.code);
+    const handleLogInClick = () => {   
+        PopularMovies.Login(emailField, passwordField).catch((error)=>{ 
+            alert(error.code); 
         });
         PopularMovies.addAuthListener((user)=>{
             if(user){
-                navigation.navigate('Home');     
+                navigation.reset({
+                    routes: [{name: 'MainTab'}]
+                });   
             }
-        });*/
+        });
     }
   
     const handleMessageButtonClick = () => {
         navigation.reset({
             routes: [{name: 'Cadastro'}]
         });
+    }
+
+    const logout = () => {
+        PopularMovies.logout();    
     }
 
     

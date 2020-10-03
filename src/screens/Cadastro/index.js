@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Container, InputArea, CustonButton, CustonButtonText, SignMessageButton, SignMessageButtonText, SignMessageButtonTextBold } from './styles';
+import { 
+    Container, 
+    InputArea, 
+    CustonButton, 
+    CustonButtonText, 
+    SignMessageButton, 
+    SignMessageButtonText, 
+    SignMessageButtonTextBold 
+} from './styles';
 import SignInput from '../../components/SignInput';
 import * as Svg from 'react-native-svg';
 import Logo from '../../assets/claquete.svg';
@@ -8,17 +16,35 @@ import PersonIcon from '../../assets/person.svg';
 import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
 
+import PopularMovies from '../../../Api';
+import firebase from '../../FirebaseConnection';
+
 export default () => {
     const navigation = useNavigation();
 
     const [nameField, setNameField] = useState(''); 
     const [emailField, setEmailField] = useState(''); 
     const [passwordField, setPasswordField] = useState(''); 
+    
+    const handleCadastro = () => {
+        if(nameField != '' && emailField != '' && passwordField != '') {
+            PopularMovies.Cadastro(emailField, passwordField).catch((error)=>{
+                alert(error.code); 
+            });
 
-    const handleLogInClick = () => {
-        navigation.navigate({
-            routes: [{name: ''}]
-        });
+            PopularMovies.addAuthListener((user)=>{
+                if(user){
+                    firebase.database().ref('usuarios').child(user.uid).set({
+                    nome: nameField
+                    });
+                }
+            });
+
+            alert('Usuário criado com sucesso');
+        } else {
+            alert('Preencha todos os campos');
+        } 
+      
     }
 
     const handleMessageButtonClick = () => {
@@ -27,36 +53,7 @@ export default () => {
         });
     }
 
-
-    /* const handleLogInClick = () => {
-        if (!email) {
-            setError("Email obrigatório*")
-            setValid(false)
-            return
-        } else if (!password && password.trim() && password.length > 6) {
-            setError("Senha fraca, mínimo 6 caracteres")
-            setValid(false)
-            return
-        } else if (!__isValidEmail(email)) {
-            setError("Email Inválido")
-            setValid(false)
-            return
-        }
-
-        handleLogInClick(email, password)
-    }
-
-    /*const handleLogInClick = async (email, password) => {
-        try {
-            let response = await auth().createUserWithEmailAndPassword(email, password)
-            if (response) {
-                console.log(tag, "🍎", response)
-            }
-        } catch (e) {
-            console.error(e.message)
-        }
-    }*/
-    
+   
 
 
     return (
@@ -86,7 +83,7 @@ export default () => {
                     password={true}
                 />
 
-                <CustonButton onPress={handleLogInClick}>
+                <CustonButton onPress={handleCadastro}>
                     <CustonButtonText>Cadastrar</CustonButtonText>
                 </CustonButton>
             </InputArea> 

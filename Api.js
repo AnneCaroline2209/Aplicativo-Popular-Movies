@@ -1,5 +1,4 @@
 import firebase from './src/FirebaseConnection';
-
 class PopularMovies {
     logout(){
         firebase.auth().signOut();
@@ -16,6 +15,9 @@ class PopularMovies {
 
     Cadastro (email, senha){
         return firebase.auth().createUserWithEmailAndPassword(email, senha);
+    }
+    RecuperarSenha(email){
+        return firebase.auth().senderPasswordResetEmail(email);
     }
 }
 

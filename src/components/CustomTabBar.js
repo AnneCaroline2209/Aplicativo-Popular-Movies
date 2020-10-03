@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components/native';
+
+// import { UserContext } from '../contexts/UserContext';
 
 import HomeIcon from '../assets/home.svg';
 import SearchIcon from '../assets/search.svg';
@@ -18,8 +20,14 @@ const TabItem = styled.TouchableOpacity`
     align-items: center;
 `;
 
+/* const AvatarIcon = styled.Image`
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+`; */
 
-export default ({navigation}) => {
+export default ({state, navigation}) => {
+   // const {state:user} = useContext(UserContext);
 
     const goTo = (screenName) => {
         navigation.navigate(screenName);
@@ -28,17 +36,22 @@ export default ({navigation}) => {
     return (
         <TabArea>
             <TabItem onPress={()=>goTo('Home')}>
-                <HomeIcon width="24" heigth="24" fill="#FFF" />
+                <HomeIcon style={{opacity: state.index===0? 1 : 0.5}} width="24" heigth="24" fill="#FFF" />
             </TabItem>
             <TabItem onPress={()=>goTo('Search')}>
-                <SearchIcon width="24" heigth="24" fill="#FFF" />
+                <SearchIcon style={{opacity: state.index===1? 1 : 0.5}} width="24" heigth="24" fill="#FFF" />
             </TabItem>
-            <TabItem onPress={()=>goTo('Search')}>
-                <FavoriteIcon width="24" heigth="24" fill="#FFF" />
+            <TabItem onPress={()=>goTo('Favorites')}>
+                <FavoriteIcon style={{opacity: state.index===2? 1 : 0.5}} width="24" heigth="24" fill="#FFF" />
             </TabItem>
-            <TabItem onPress={()=>goTo('Search')}>
-                <AccountIcon width="24" heigth="24" fill="#FFF" />
+           <TabItem onPress={()=>goTo('Profile')}>
+                <AccountIcon style={{opacity: state.index===3? 1 : 0.5}} width="24" heigth="24" fill="#FFF" />
             </TabItem>
         </TabArea>
     );
 }
+/* {user.avatar != '' ?
+      <AvatarIcon source={{uri: user.avatar}} />
+  :
+  <AccountIcon style={{opacity: state.index===3? 1 : 0.5}} width="24" heigth="24" fill="#FFF" />
+  } */
