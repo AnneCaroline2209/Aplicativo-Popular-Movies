@@ -9,13 +9,13 @@ import { Container,
          MovieArea
 
 } from './styles';
+
 import SearchIcon from '../../assets/search.svg';
 import ApiMovies from '../../ApiMovies/ApiMovies';
 import MovieItem from '../../components/MovieItem';
 
 export default () => {
     const navigation = useNavigation();
-
     const [lista, setLista] = useState(null);
     const [page, setPage] = useState(1);
     

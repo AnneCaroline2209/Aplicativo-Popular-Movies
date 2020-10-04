@@ -16,9 +16,6 @@ class PopularMovies {
     Cadastro (email, senha){
         return firebase.auth().createUserWithEmailAndPassword(email, senha);
     }
-    RecuperarSenha(email){
-        return firebase.auth().senderPasswordResetEmail(email);
-    }
 }
 
 export default new PopularMovies();

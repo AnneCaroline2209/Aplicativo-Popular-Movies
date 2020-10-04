@@ -10,7 +10,6 @@ import {
     SignMessageButtonTextBold 
 } from './styles';
 import SignInput from '../../components/SignInput';
-import * as Svg from 'react-native-svg';
 import Logo from '../../assets/claquete.svg';
 import PersonIcon from '../../assets/person.svg';
 import EmailIcon from '../../assets/email.svg';
@@ -21,7 +20,6 @@ import firebase from '../../FirebaseConnection';
 
 export default () => {
     const navigation = useNavigation();
-
     const [nameField, setNameField] = useState(''); 
     const [emailField, setEmailField] = useState(''); 
     const [passwordField, setPasswordField] = useState(''); 
@@ -52,9 +50,6 @@ export default () => {
             routes: [{name: 'LogIn'}]
         });
     }
-
-   
-
 
     return (
         <Container>

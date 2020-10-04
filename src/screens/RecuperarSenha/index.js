@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Container, InputArea, CustonButton, CustonButtonText, SignMessageButton, SignMessageButtonText, SignMessageButtonTextBold } from './styles';
+import { Container, InputArea, CustonButton, CustonButtonText } from './styles';
 import SignInput from '../../components/SignInput';
-import * as Svg from 'react-native-svg';
+import { Alert } from 'react-native';
+
 import Logo from '../../assets/claquete.svg';
 import EmailIcon from '../../assets/email.svg';
 
-import PopularMovies from '../../../Api';
+import firebase from '../../FirebaseConnection';
 
 export default () => {
     
@@ -15,14 +16,19 @@ export default () => {
     const [emailField, setEmailField] = useState(''); 
  
     const RecuperarSenha = () => {
-        PopularMovies.RecuperarSenha(emailField).cath((error)=>{
+
+        firebase.auth().sendPasswordResetEmail(emailField).catch((error)=>{
             alert(error.code);
-        });
-       /* PopularMovies.RecuperarSenha(emailField).catch((error)=>{
-            alert(error.code);
-        });
-        alert('Um link foi enviado para o seu email');
-        navigation.navigate('LogIn');*/
+          });
+          Alert.alert( 
+            "Aviso!",
+            "Um link foi enviado para o e-mail cadastrado.",
+            [{
+                text: "Ok"
+                
+            }]
+        )
+        navigation.navigate('LogIn');
     } 
 
     return (
