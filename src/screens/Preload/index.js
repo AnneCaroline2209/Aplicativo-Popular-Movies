@@ -3,23 +3,23 @@ import { Container, LoadingIcon } from './styles';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import * as Svg from 'react-native-svg';
-import Logo from '../../assets/claquete.svg';
+import Logo from '../../../assets/claquete.svg';
+import PopularMovies from '../../../Api';
 
 export default () => {
     const navigation = useNavigation();
     useEffect(() => {
-        const checkToken = async () => {
-            const token = await AsyncStorage.getItem('token');
-            if (token !== null){
-                navigation.reset[{
-                    routes:[{name: 'MainTab'}]
-                }];
-                
+        PopularMovies.addAuthListener((user)=>{
+            if (user) {
+                navigation.reset({
+                    routes:[{name:'MainTab'}]
+                });
             } else {
-              navigation.navigate('LogIn');
+                navigation.reset({
+                    routes:[{name:'LogIn'}]
+                });
             }
-        }
-        checkToken();
+        });   
     }, []);
 
     return (

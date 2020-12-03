@@ -10,10 +10,10 @@ import {
     SignMessageButtonTextBold 
 } from './styles';
 import SignInput from '../../components/SignInput';
-import Logo from '../../assets/claquete.svg';
-import PersonIcon from '../../assets/person.svg';
-import EmailIcon from '../../assets/email.svg';
-import LockIcon from '../../assets/lock.svg';
+import Logo from '../../../assets/claquete.svg';
+import PersonIcon from '../../../assets/person.svg';
+import EmailIcon from '../../../assets/email.svg';
+import LockIcon from '../../../assets/lock.svg';
 
 import PopularMovies from '../../../Api';
 import firebase from '../../FirebaseConnection';

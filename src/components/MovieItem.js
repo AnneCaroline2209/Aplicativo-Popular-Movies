@@ -1,6 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react';
+import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
+import Rating from './Raiting';
 
 const Area = styled.TouchableOpacity`
     background-color: #FFFFFF;
@@ -36,19 +37,48 @@ const SeeProfileButtonText = styled.Text`
     color: #000;
 `;
 
+const AreaRatingFavorite = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+const FavoriteButton = styled.TouchableOpacity`
+    width: 26px;
+    height: 26px;
+    align-items: center;
+`;
+
 const IMAGE_DOMAIN_URL = 'https://image.tmdb.org/t/p/w500/';
 
 export default ({data}) => {
     const navigation = useNavigation();
+    const handleClick = () => {  
+        navigation.navigate('Movies', {
+            id: data.id,
+            name: data.title,
+            avatar: data.poster_path,
+            rating: data.vote_average / 2,
+            note: data.vote_average
+    });
+  }
+
+
+
     return(
-        <Area>
+        <Area onPress={handleClick}>
             <Avatar source={{uri: IMAGE_DOMAIN_URL + data.poster_path }} />
             <InfoArea>
                 <MovieTitle numberOfLines={2}>{data.title}</MovieTitle>
-
+                <Rating 
+                        stars={data.vote_average / 2} 
+                        note={data.vote_average}
+                        showNumber={true} 
+                /> 
                 <SeeProfileButton>
                   <SeeProfileButtonText>Descrição</SeeProfileButtonText>
-                </SeeProfileButton>    
+                </SeeProfileButton> 
+                  
             </InfoArea>
         </Area>
     );

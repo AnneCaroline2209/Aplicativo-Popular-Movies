@@ -19,7 +19,7 @@ export const HeaderArea = styled.View`
 
 export const HeaderTitle = styled.Text`
     width: 240px;
-    margin-top: 10px;
+    margin-top: 25px;
     font-size: 24px;
     font-weight: bold;
     color: #FFF;
@@ -31,6 +31,6 @@ export const SearchButton = styled.TouchableOpacity`
 `;
 
 export const MovieArea = styled.View`
-    margin-top: 30px;
+    margin-top: 20px;
     margin-bottom: 30px;
 `; 

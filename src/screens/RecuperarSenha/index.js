@@ -4,8 +4,8 @@ import { Container, InputArea, CustonButton, CustonButtonText } from './styles';
 import SignInput from '../../components/SignInput';
 import { Alert } from 'react-native';
 
-import Logo from '../../assets/claquete.svg';
-import EmailIcon from '../../assets/email.svg';
+import Logo from '../../../assets/claquete.svg';
+import EmailIcon from '../../../assets/email.svg';
 
 import firebase from '../../FirebaseConnection';
 

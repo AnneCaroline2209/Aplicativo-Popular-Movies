@@ -8,21 +8,28 @@ export const Container = styled.SafeAreaView`
 
 export const Scroller = styled.ScrollView`
     flex: 1;
-    padding: 20px;
 `;
 
+export const MovieArea = styled.View`
+    margin-top: 20px;
+    margin-bottom: 30px;
+`; 
 export const HeaderArea = styled.View`
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+
 `;
 
 export const HeaderTitle = styled.Text`
-    width: 240px;
-    margin-top: 10px;
+    margin-top: 40px;
     font-size: 24px;
     font-weight: bold;
     color: #FFF;
+    left: 25px;    
+`;
+
+export const InputArea = styled.View`
+    width: 90%; 
+    margin-top: 10px;
+    left: 15px;    
 `;
 
 export const SearchButton = styled.TouchableOpacity`
